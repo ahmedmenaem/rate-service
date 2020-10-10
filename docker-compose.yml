@@ -1,0 +1,29 @@
+version: "3"
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - flextock
+  rate-service:
+    build: .
+    image: rates-service
+    ports:
+      - "8080:8080"
+    networks:
+      - flextock
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin@@1234
+      - POSTGRES_DB=rates_db
+      - POSTGRES_HOST=postgres
+
+networks:
+  flextock:
+    driver: bridge

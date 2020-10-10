@@ -8,7 +8,7 @@ from app.models.currency import Currency
 router = APIRouter()
 
 
-@router.get('/', response_model=Rate)
+@router.get('', response_model=Rate)
 async def get_rate_controller(
     base_currency: Currency,
     target_currency: Currency,

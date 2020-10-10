@@ -12,9 +12,11 @@ requests = "*"
 pydantic = "*"
 sqlalchemy = "*"
 psycopg2 = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.6"
 
 [scripts]
-start = "uvicorn main:app --reload --port 8080 --host 0.0.0.0"
+start = "uvicorn app.main:app --reload --port 8080 --host 0.0.0.0"
+test = "python -m pytest app/tests"

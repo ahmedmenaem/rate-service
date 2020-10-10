@@ -2,7 +2,17 @@
 
 Rate service is a service that return the exchange rate between 2 currencies
 
-## Installation
+## Run using docker-compose
+
+```bash
+docker-compose up
+```
+
+## Check out the documentation
+
+Documentation using [openApi](http://localhost:8080/docs)
+
+## Run manual
 
 ### Install and Run Postgres [Recommended to user docker](https://www.docker.com/)
 
@@ -61,6 +71,12 @@ git clone https://github.com/ahmedmenaem/rate-service.git
 cd rate-service
 ```
 
+Run python virtual environment
+
+```bash
+pipenv shell
+```
+
 Use the package manager [pipenv](https://pypi.org/project/pipenv/) to install dependencies and create a virtualenv.
 
 ```bash
@@ -71,6 +87,12 @@ Run the service
 
 ```bash
 pipenv run start
+```
+
+Test Service
+
+```bash
+pipenv run test
 ```
 
 ## Deployment
@@ -84,7 +106,7 @@ docker network create -d bridge flextock --subnet 10.0.0.0
 ### build rate service
 
 ```bash
-docker build -t rate-service:latest . -f ./infrastructure/Dockerfile
+docker build -t rate-service:latest .
 ```
 
 ### run service
